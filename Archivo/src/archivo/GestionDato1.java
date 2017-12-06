@@ -12,9 +12,6 @@ public class GestionDato1 {
     
     private List<Persona> personaList;
     private List<Auto> autoList;
-    
-    File datosPersona = new File("C:/Users/Estudiante/Documents/GUARDE AQUI SUS ARCHIVOS");
-    File datosAuto = new File("C:/Users/Estudiante/Documents/GUARDE AQUI SUS ARCHIVOS");
 
     public GestionDato1(List<Persona> personaList, List<Auto> autoList) {
         this.personaList = personaList;
