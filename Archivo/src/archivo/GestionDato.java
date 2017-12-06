@@ -1,13 +1,18 @@
 
 package archivo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+//import java.io.BufferedReader;
+//import java.io.BufferedWriter;
+import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+//import java.io.FileReader;
+//import java.io.FileWriter;
+//import java.io.IOException;
+//import java.util.ArrayList;
 import java.util.List;
 
 public class GestionDato {
@@ -22,7 +27,7 @@ public class GestionDato {
         this.autoList = autoList;
     }
     
-    public boolean persistirPersonaList(List<Persona> personaList){
+   /* public boolean persistirPersonaList(List<Persona> personaList){
         boolean retorno = false;
         try{
             FileWriter ae = new FileWriter("C:/Users/Estudiante/Documents/GUARDE AQUI SUS ARCHIVOS");
@@ -82,7 +87,7 @@ public class GestionDato {
             if(p.getCodigo()==a)
         }
         return null;
-    }*/
+    }
     
     public Auto dividido1(String linea){
         
@@ -106,6 +111,20 @@ public class GestionDato {
             return null;
         }
     }
+    */
+    
+    public boolean persistirPersonaList(List<Persona> personaList) throws FileNotFoundException, IOException {
+        boolean retorno = false;
+        FileOutputStream ae = new FileOutputStream("C:/Users/Estudiante/Documents/GUARDE AQUI SUS ARCHIVOS", true);
+        DataOutputStream escritura = new DataOutputStream(ae);
+        for (Persona p: personaList){
+            escritura.writeInt(p.getCodigo());
+            escritura.writeUTF(p.getNombre());
+            escritura.writeInt(p.getEdad());
+        }
+        return true;
+    }
+    
     
     boolean addPersona(Persona p){
         return this.addPersona(p);
